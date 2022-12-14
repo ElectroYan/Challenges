@@ -9,11 +9,11 @@ namespace Challenges.AdventOfCode {
                 Directory.CreateDirectory("Input");
 
             if (File.Exists($"Input/{year}-{day}.txt"))
-                return File.ReadAllText($"Input/{year}-{day}.txt").Trim('\n');
+                return File.ReadAllText($"Input/{year}-{day}.txt");
             
             var client = GetClientWithCookies();
             var data = client.DownloadData($"https://adventofcode.com/{year}/day/{day}/input");
-            var input = Encoding.UTF8.GetString(data).Trim('\n');
+            var input = Encoding.UTF8.GetString(data);
             File.WriteAllText($"Input/{year}-{day}.txt", input);
             return input.Trim('\n');
         }
